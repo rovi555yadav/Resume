@@ -8,17 +8,18 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     rollupOptions: {
+      external: [],
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom'],
-          motion: ['framer-motion'],
-          icons: ['lucide-react']
-        }
+        manualChunks: undefined
       }
     }
   },
   
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
   },
+  
+  esbuild: {
+    target: 'es2020'
+  }
 });
